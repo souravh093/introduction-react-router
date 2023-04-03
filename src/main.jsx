@@ -13,6 +13,7 @@ import Root from './components/Root/Root'
 import Home from './components/Home/Home'
 import Friends from './components/Friends/Friends'
 import FriendDetails from './components/FriendDetails/FriendDetails'
+import Posts from './components/Posts/Posts'
 
 
 // simple routes
@@ -56,7 +57,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/friend/:friendId',
-        element: <FriendDetails />
+        element: <FriendDetails />,
+        loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/users/${params.friendId}`)
+      },
+      {
+        path: '/posts',
+        element: <Posts />
       }
     ]
   }
